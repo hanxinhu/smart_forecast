@@ -9,9 +9,8 @@ CORS(app, supports_credentials=True)
 @app.route('/hello')
 def hello_world():
     f = open('./static/test.json')
-    s = f.readline()
-    obj = json.loads(s)
-    print(obj)
+    string = f.readlines()
+    s = "".join([i.strip() for i in string])
     return s
 
 
