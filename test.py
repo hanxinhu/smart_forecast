@@ -1,4 +1,3 @@
 s = 'JFMAMJJASOND'
-print(s)
-print(s[1:3])
-print(s[-3:-1])
+for i in range(0, 21):
+    print('"'+str(i)+'",')
