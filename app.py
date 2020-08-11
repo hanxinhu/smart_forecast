@@ -4,7 +4,9 @@ import json
 from flask_cors import CORS
 import os
 import sys
+import subprocess
 import logging
+
 root_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 
 app = Flask(__name__, static_folder=root_path + '/static')
@@ -19,7 +21,7 @@ def index():
 @app.route('/init')
 def hello_world():
     f = open(root_path + '/config.json', encoding='utf-8')
-    print('config path : '+root_path+'/config.json')
+    print('config path : ' + root_path + '/config.json')
     string = f.readlines()
     s = "".join([i.strip() for i in string])
     return s
@@ -35,12 +37,13 @@ def get_file1():
     return send_file(root_path + '/resource/img1.png', mimetype='png')
 
 
-@app.route('/run')
+@app.route('/run', methods=['GET', 'POST'])
 def run_script():
-    os.system('sh ./resource/test.sh a b c > res.txt')
-    os.system('mkdir test')
-    return 'test'
-
+    #request.form. 默认是form-data格式 json格式需要用下面的代码
+    s = request.get_data(as_text=True)
+    obj = json.loads(s)
+    subprocess.call('bash {} {}'.format(obj.get('name'), ",".join(obj.get('params'))), shell=True)
+    return obj.get('name')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
