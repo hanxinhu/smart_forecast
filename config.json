@@ -34,7 +34,8 @@
       {
         "name": "varname",
         "desc": "变量",
-        "type": "string"
+        "type": "list",
+        "values":["temp", "rainfall"]
       },
       {
         "name": "season",
@@ -202,7 +203,8 @@
       {
         "name": "varname",
         "desc": "变量",
-        "type": "string"
+         "type": "list",
+        "values":["temp", "rainfall"]
       },
       {
         "name": "subReg",
