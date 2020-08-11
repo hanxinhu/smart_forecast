@@ -5,9 +5,9 @@ from flask_cors import CORS
 import os
 import sys
 
-root_path = os.path.split(os.path.realpath(sys.argv[0]))[0];
+root_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder=root_path + '/static')
 CORS(app, supports_credentials=True)
 
 
