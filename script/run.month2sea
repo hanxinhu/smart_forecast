@@ -1,0 +1,49 @@
+#!/bin/bash
+
+#-------------------
+#--- parameters ---
+#-------------------
+#--- element variables ---
+varname="rainfall"
+#varname="temp"
+#--- atm variables ---
+#varname="olr"
+#varname="hgt"
+#varname="uwnd"
+#varname="vwnd"
+
+#--- season ---
+#season="DJF"
+#season="MAM"
+#season="JJA"
+#season="SON"
+#season="NDJ"
+#season="OND"
+#season="JFM"
+#season="FMA"
+#season="JAS"
+season="OND"
+#season="MAM"
+
+#--- years ---
+ryear=1979   #reference year
+#eyear=2018  #end year
+#eyear=2019   #end year
+eyear=2020   #end year
+
+#-------------------
+#--- file in/out ---
+#-------------------
+if [ ${varname} == "rainfall" ] || [ ${varname} == "temp" ]; then
+execute_script="month2sea.sta.ncl" 
+out_screen="./outlog/out.month2sea.sta.${varname}.${season}"
+else
+execute_script="month2sea.atm.ncl" 
+out_screen="./outlog/out.month2sea.atm.${varname}.${season}"
+fi
+
+#-------------------
+#--- run ncl script ---
+#-------------------
+ncl varname=\"$varname\" season=\"$season\" ryear=$ryear eyear=$eyear $execute_script >& $out_screen #&
+

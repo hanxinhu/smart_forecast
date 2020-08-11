@@ -4,7 +4,7 @@ import json
 from flask_cors import CORS
 import os
 import sys
-
+import logging
 root_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 
 app = Flask(__name__, static_folder=root_path + '/static')
@@ -18,7 +18,7 @@ def index():
 
 @app.route('/init')
 def hello_world():
-    f = open(root_path + '/config.json')
+    f = open(root_path + '/config.json', encoding='utf-8')
     print('config path : '+root_path+'/config.json')
     string = f.readlines()
     s = "".join([i.strip() for i in string])
@@ -37,8 +37,8 @@ def get_file1():
 
 @app.route('/run')
 def run_script():
-    os.system('sh ./resource/test.sh')
-    os.system('echo $PS1')
+    os.system('sh ./resource/test.sh a b c > res.txt')
+    os.system('mkdir test')
     return 'test'
 
 

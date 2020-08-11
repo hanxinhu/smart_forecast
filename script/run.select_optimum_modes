@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#-------------------
+#--- parameters ---
+#-------------------
+#--- hindcast year ---
+#fyear=2019
+fyear=2020
+
+#--- season for predictor ---
+#baseseason="JJA"
+#baseseason="SON"
+#baseseason="NDJ"
+#baseseason="DJF"
+#baseseason="OND"
+#baseseason="JFM"
+baseseason="FMA"
+#baseseason="MAM"
+#--- season for predictand (rainfall) ---
+#fcstseason="DJF"
+#fcstseason="MAM"
+fcstseason="JJA"
+#fcstseason="JAS"
+#fcstseason="OND"
+
+#-------------------
+#--- file in/out ---
+#-------------------
+execute_script="select_optimum_modes-v1.2.ncl"
+out_screen="./outlog/out.select_optimum_modes.${baseseason}.to.${fcstseason}.${fyear}"
+
+#-------------------
+#--- run ncl script ---
+#-------------------
+ncl baseseason=\"$baseseason\" fcstseason=\"$fcstseason\" fyear=$fyear $execute_script >& $out_screen 

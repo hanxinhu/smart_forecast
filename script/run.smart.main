@@ -1,0 +1,97 @@
+#!/bin/bash
+
+#-------------------
+#--- parameters ---
+#-------------------
+#--- forecast or hindcast? ---
+#fcst="forecast"
+fcst="hindcast"
+
+#--- optimum modes ---
+#nopt_modes_hgt=8
+#nopt_modes_olr=3
+#NDJ->MAM
+##nopt_modes_olr=6
+#nopt_modes_hgt=9
+#nopt_modes_olr=7
+#NDJ->JJA
+#nopt_modes_hgt=10
+#nopt_modes_olr=8
+#DJF->MAM
+##nopt_modes_hgt=4
+#nopt_modes_hgt=6
+#nopt_modes_olr=6
+#DJF->JJA
+##nopt_modes_hgt=9
+#nopt_modes_hgt=8
+#nopt_modes_olr=6
+##nopt_modes_hgt=10
+##nopt_modes_olr=8
+##nopt_modes_hgt=6
+##nopt_modes_olr=6
+##nopt_modes_hgt=5
+##nopt_modes_olr=2
+#OND->MAM
+#nopt_modes_hgt=8
+#nopt_modes_olr=7
+#SON->MAM
+#nopt_modes_hgt=8
+#nopt_modes_olr=8
+#SON->JJA
+#nopt_modes_hgt=10
+#nopt_modes_olr=7
+#OND->JJA
+#nopt_modes_hgt=10
+#nopt_modes_olr=9
+#JFM->JJA
+#nopt_modes_hgt=4
+##nopt_modes_olr=2
+#nopt_modes_olr=9
+#FMA->JJA
+nopt_modes_hgt=11
+nopt_modes_olr=6
+#MAM->JAS
+#nopt_modes_hgt=7
+#nopt_modes_olr=5
+#MAM->OND
+#nopt_modes_hgt=9
+#nopt_modes_olr=3
+
+#--- forecast year ---
+#fyear=2019    #year for predictor, ofyear=fyear/fyear+1 for predictand
+fyear=2020    #year for predictor, ofyear=fyear/fyear+1 for predictand
+              #fcstseason="DJF"/"MAM", ofyear = fyear + 1
+              #fcstseason="JJA"/"SON", ofyear = fyear 
+
+#--- season for predictor ---
+#baseseason="JJA"
+#baseseason="SON"
+#baseseason="OND"
+#baseseason="NDJ"
+#baseseason="DJF"
+#baseseason="JFM"
+baseseason="FMA"
+#baseseason="MAM"
+#--- season for predictand (rainfall) ---
+#fcstseason="DJF"
+#fcstseason="MAM"
+fcstseason="JJA"
+#fcstseason="JAS"
+#fcstseason="OND"
+
+#-------------------
+#--- file in/out ---
+#-------------------
+if [ ${fcst} == "forecast" ]; then
+execute_script="model.forecast-v1.1.ncl"
+out_screen="./outlog/out.model.forecast_"$baseseason".to."$fcstseason"-"$fyear
+fi
+if [ ${fcst} == "hindcast" ]; then
+execute_script="model.hindcast-v1.1.ncl"
+out_screen="./outlog/out.model.hindcast_"$baseseason".to."$fcstseason"-"$fyear
+fi
+
+#-------------------
+#--- run ncl script ---
+#-------------------
+ncl fcst=\"$fcst\" nopt_modes_hgt=$nopt_modes_hgt nopt_modes_olr=$nopt_modes_olr fyear=$fyear baseseason=\"$baseseason\" fcstseason=\"$fcstseason\" $execute_script >& $out_screen 
