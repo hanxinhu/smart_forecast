@@ -19,6 +19,7 @@ def index():
 @app.route('/init')
 def hello_world():
     f = open(root_path + '/config.json')
+    print('config path : '+root_path+'/config.json')
     string = f.readlines()
     s = "".join([i.strip() for i in string])
     return s
@@ -32,6 +33,13 @@ def get_file():
 @app.route('/file1')
 def get_file1():
     return send_file(root_path + '/resource/img1.png', mimetype='png')
+
+
+@app.route('/run')
+def run_script():
+    os.system('sh ./resource/test.sh')
+    os.system('echo $PS1')
+    return 'test'
 
 
 if __name__ == '__main__':
