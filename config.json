@@ -1,5 +1,17 @@
 [
   {
+    "name": "test.sh",
+    "desc": "测试专用",
+    "target": "/resource/{}.png",
+    "params": [
+      {
+        "name": "test",
+        "desc": "文件名",
+        "type": "string"
+      }
+    ]
+  },
+  {
     "name": "month2sea.ncl",
     "desc": "1. 数据预处理",
     "params": [

@@ -1,3 +1,4 @@
-s = 'JFMAMJJASOND'
-for i in range(0, 21):
-    print('"'+str(i)+'",')
+import subprocess
+
+subprocess.call('pwd', shell=True)
+subprocess.call('sh test.sh file.name', shell=True)
