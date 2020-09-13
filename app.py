@@ -10,7 +10,8 @@ import subprocess
 import logging
 import base64
 
-root_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+# root_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+root_path = '.'
 logging.info("root_path: " + root_path)
 app = Flask(__name__, static_folder=root_path + '/static')
 CORS(app, supports_credentials=True)
@@ -50,13 +51,13 @@ def run_script():
     target_file = root_path + target.format(*params)
     temp_file = target_file + '.txt'
 
-
     print(target_file)
     print(temp_file)
     print(params)
     os.system('touch {}'.format(temp_file))
-    print('sh {} {}'.format(obj.get('name'), " ".join(params)))
-    subprocess.call('sh {} {}'.format(obj.get('name'), " ".join(params)), shell=True)
+    cd_root_path = 'cd ' + root_path + '&&'
+    print((cd_root_path + 'sh {} {}').format(obj.get('name'), " ".join(params)))
+    subprocess.call((cd_root_path + 'sh {} {}').format(obj.get('name'), " ".join(params)), shell=True)
     return obj.get('name')
 
 

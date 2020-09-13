@@ -1,0 +1,309 @@
+[
+  {
+    "name": "test.sh",
+    "desc": "测试专用",
+    "target": "/resource/{}.png",
+    "params": [
+      {
+        "name": "test",
+        "desc": "文件名",
+        "type": "string"
+      },
+      {
+        "name": "test-select",
+        "desc": "test-select",
+        "type": "select",
+        "key_values": [
+          {
+            "key": "DDJ",
+            "value": "三月"
+          },
+          {
+            "key": "3",
+            "value": "4"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "month2sea.ncl",
+    "desc": "1. 数据预处理",
+    "params": [
+      {
+        "name": "eyear",
+        "desc": "预测年份",
+        "type": "list",
+        "values": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      },
+      {
+        "name": "varname",
+        "desc": "变量",
+        "type": "list",
+        "values": [
+          "temp",
+          "rainfall"
+        ]
+      },
+      {
+        "name": "season",
+        "desc": "数据季节",
+        "type": "list",
+        "values": [
+          "JFM",
+          "FMA",
+          "MAM",
+          "AMJ",
+          "MJJ",
+          "JJA",
+          "JAS",
+          "ASO",
+          "SON",
+          "OND",
+          "NDJ",
+          "DJF"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "select_optimum_modes.ncl",
+    "desc": "2. 回报检验",
+    "params": [
+      {
+        "name": "fyear",
+        "desc": "预测年份",
+        "type": "list",
+        "values": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      },
+      {
+        "name": "fcstseason",
+        "desc": "预测季节",
+        "type": "list",
+        "values": [
+          "JFM",
+          "FMA",
+          "MAM",
+          "AMJ",
+          "MJJ",
+          "JJA",
+          "JAS",
+          "ASO",
+          "SON",
+          "OND",
+          "NDJ",
+          "DJF"
+        ]
+      },
+      {
+        "name": "baseseason",
+        "desc": "起报时间",
+        "type": "list",
+        "values": [
+          "JFM",
+          "FMA",
+          "MAM",
+          "AMJ",
+          "MJJ",
+          "JJA",
+          "JAS",
+          "ASO",
+          "SON",
+          "OND",
+          "NDJ",
+          "DJF"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "model.forecast.ncl",
+    "desc": "3. 预报",
+    "params": [
+      {
+        "name": "fyear",
+        "desc": "预测年份",
+        "type": "list",
+        "values": [
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008",
+          "2009",
+          "2010",
+          "2011",
+          "2012",
+          "2013",
+          "2014",
+          "2015",
+          "2016",
+          "2017",
+          "2018",
+          "2019",
+          "2020"
+        ]
+      },
+      {
+        "name": "fcstseason",
+        "desc": "预测季节",
+        "type": "list",
+        "values": [
+          "JFM",
+          "FMA",
+          "MAM",
+          "AMJ",
+          "MJJ",
+          "JJA",
+          "JAS",
+          "ASO",
+          "SON",
+          "OND",
+          "NDJ",
+          "DJF"
+        ]
+      },
+      {
+        "name": "baseseason",
+        "desc": "起报时间",
+        "type": "list",
+        "values": [
+          "JFM",
+          "FMA",
+          "MAM",
+          "AMJ",
+          "MJJ",
+          "JJA",
+          "JAS",
+          "ASO",
+          "SON",
+          "OND",
+          "NDJ",
+          "DJF"
+        ]
+      },
+      {
+        "name": "varname",
+        "desc": "变量",
+        "type": "list",
+        "values": [
+          "temp",
+          "rainfall"
+        ]
+      },
+      {
+        "name": "subReg",
+        "desc": "预测区域",
+        "type": "list",
+        "values": [
+          "BJRCC",
+          "SYRCC"
+        ]
+      },
+      {
+        "name": "olr",
+        "desc": "OLR模态数",
+        "type": "list",
+        "values": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ]
+      },
+      {
+        "name": "hgt",
+        "desc": "HGT模态数字",
+        "type": "list",
+        "values": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "11",
+          "12",
+          "13",
+          "14",
+          "15",
+          "16",
+          "17",
+          "18",
+          "19",
+          "20"
+        ]
+      }
+    ]
+  }
+]
